@@ -8,15 +8,25 @@ import (
 )
 
 func main() {
-	file := "./examples/long-nl.txt"
-	f, err := os.Open(file)
+	if len(os.Args) < 3 {
+		fmt.Print("no input is given")
+		return
+	}
+
+	f, err := os.Open(os.Args[1])
 	if err != nil {
 		fmt.Println("can't open the file")
 		return
 	}
-	var I = 0
+
+	I := 0
+	N, err := strconv.Atoi(os.Args[2])
+	if err != nil {
+		fmt.Println("number is expected")
+		return
+	}
 	for {
-		buf := make([]byte, 16)
+		buf := make([]byte, N)
 		n, err := f.Read(buf)
 		if err == io.EOF {
 			return
@@ -26,7 +36,7 @@ func main() {
 			return
 		}
 
-		fmt.Printf("%08x: ", I*16)
+		fmt.Printf("%08x: ", I*N)
 		for i := 0; i < n; i++ {
 			if buf[i] < 0x10 {
 				fmt.Print("0")
@@ -42,7 +52,6 @@ func main() {
 			} else {
 				fmt.Print(string(c))
 			}
-
 		}
 		fmt.Print("\n")
 	}

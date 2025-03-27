@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "hello world",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "args": ["examples/hello.txt", "16"],
+            "program": "${workspaceFolder}/main.go"
+        },
+        {
+            "name": "long",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "args": ["examples/long.txt", "32"],
+            "program": "${workspaceFolder}/main.go"
+        },
+        {
+            "name": "long-nl",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "args": ["examples/long-nl.txt", "32"],
+            "program": "${workspaceFolder}/main.go"
+        },
+    ]
+}
